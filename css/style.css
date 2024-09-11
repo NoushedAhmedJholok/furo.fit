@@ -1,0 +1,448 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+/* ========== Common Css Here  */
+body{
+    font-family: "Manrope", sans-serif;
+    background-color: #ffffff;
+}
+.p_blue_5{
+    color: #B8DDDE;
+}
+.p_blue_5_bg{
+    background-color: #B8DDDE;
+}
+.p_blue{
+    color: #009093 !important;
+}
+/* ========== Navbar Css Here  */
+#navbar_area{
+    background-color: #F6F6F6;
+    z-index: 99999;
+}
+#navbar_area img{
+   height: 43px;
+   width: auto;
+   margin: 24px 0px;
+}
+#navbar_area ul {
+	list-style-type: none;
+	margin-top: 30px;
+	padding-left: 0px;
+}
+#navbar_area ul li a{
+    color: rgba(0, 0, 0, 0.60);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+    padding: 5px 10px;
+    text-decoration: none;
+    transition: all .3s linear;
+}
+#navbar_area ul li a.active{
+    color: #009093;
+}
+#navbar_area ul li a:hover{
+    color: #009093;
+}
+.download_link{
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 125% */
+    border-radius: 6px;
+    background: #009093;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: all .3s linear;
+    border: .5px solid #00909300;
+}
+.download_link:hover{
+    color: #009093;
+    background: #ffffff;
+    border: .5px solid #009093;
+}
+.mtnamehobe {
+	margin-top: 30px;
+}
+.right_effect_img img{
+    height: auto;
+    width: 376px !important;
+}
+.right_effect_img{
+    height: auto;
+    width: 376px !important;
+}
+.right_effect_img{
+    position: relative;
+}
+img.effect_one{
+    position: absolute;
+    width: 200px !important;
+    top: -15px;
+    right: -100px;
+}
+img.effect_two{
+    position: absolute;
+    width: 200px !important;
+    top: 171px;
+    left: -100px;
+}
+img.effect_three{
+    position: absolute;
+    width: 200px !important;
+    top: 355px;
+    right: -110px;
+}
+img.effect_four{
+    position: absolute;
+    width: 200px !important;
+    bottom: 118px;
+    left: -110px;
+}
+img.effect_five{
+    position: absolute;
+    width: 200px !important;
+    bottom: -45px;
+    right: -110px;
+}
+.right_effect_img img {
+    opacity: 0; /* All images hidden initially */
+    transition: opacity 1s; /* Transition effect for fade-in */
+}
+
+.visible {
+    opacity: 1 !important; /* Class to make image visible */
+}
+.item_card {
+	padding: 16px;
+	box-shadow: inset 176px 24px 75px -87px #00909332;
+    border: 1px solid #009093;
+    border-radius: 12px;
+    margin-top: 16px;
+}
+.item_card h3{
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 150% */
+}
+.item_card p{
+    color: rgba(0, 0, 0, 0.70);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; 
+}
+.getstarted{
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 125% */
+    background-color: #009093;
+    padding: 16px;
+    text-decoration: none;
+    margin-top: 40px;
+    border-radius: 5.279px;
+    transition: all .3s linear;
+    border: .5px solid #00909300;
+}
+.getstarted:hover{
+    color: #009093;
+    background-color: #ffffff;
+    border: .5px solid #009093;
+}
+.content_text h3.myh3{
+    color: #21272A;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 44px; /* 129.412% */
+    margin-top: 85px;
+    margin-bottom: 40px;
+}
+.my_img_here {
+    margin-top: 66px;
+}
+#navButton{
+    display: none;
+}
+/* Slider container to hold the images */
+.slider-container {
+    width: 100%; /* Full width container */
+    overflow: hidden; /* Hide overflow content */
+    position: relative;
+    height: 150px; /* Match the image height */
+}
+
+/* Slider with images */
+.slider {
+    display: flex; /* Align images side by side */
+    width: max-content; /* Allow the slider to grow based on content */
+    animation: slide 15s linear infinite; /* Infinite sliding animation */
+}
+
+.slider img {
+	width: 150px;
+	margin: 0 4px;
+}
+/* Keyframes for sliding animation, sliding through duplicated images */
+@keyframes slide {
+    0% {
+        transform: translateX(-50%); /* Start at the beginning */
+    }
+    100% {
+        transform: translateX(0); /* Move by 50% of the slider to complete the loop */
+    }
+}
+.baner_slider{
+    margin-top: 100px;
+}
+
+/* Slider container to hold the images */
+.image-slider-container {
+    width: 100%; /* Full width container */
+    overflow: hidden; /* Hide overflow content */
+    position: relative;
+    height: 150px; /* Match the image height */
+}
+
+/* Slider with images */
+.image-slider {
+    display: flex; /* Align images side by side */
+    width: max-content; /* Allow the slider to grow based on content */
+    animation: imageSlide 15s linear infinite; /* Infinite sliding animation */
+}
+
+.image-slider img {
+    width: 150px; /* Image width */
+    margin: 0 10px; /* Add space between images */
+}
+
+/* Keyframes for sliding animation, sliding through duplicated images */
+@keyframes imageSlide {
+    0% {
+        transform: translateX(0); /* Start at the beginning */
+    }
+    100% {
+        transform: translateX(-50%); /* Move by 50% of the slider to complete the loop */
+    }
+}
+
+.baner_slider{
+    display: none;
+}
+#navbar_area{
+    padding: 0px 30px;
+}
+
+/* Mobile frame styling */
+.mobile-frame {
+    width: 360px;
+    height: 640px;
+    border: 10px solid #333;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    margin: 50px auto;
+}
+
+/* Scrolling container */
+.scroll-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Image to be scrolled */
+.scroll-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    animation: scroll 25s linear infinite;
+}
+
+/* Animation for continuous scroll */
+@keyframes scroll {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+.tour_list_card{
+    border: 1px solid #DADADA;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+}
+.tour_list_card img{
+    border-radius: 8px;
+    margin-right: 16px;
+}
+.tour_list_card .tour_info span{
+    color: rgba(25, 33, 38, 0.80);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px; /* 116.667% */
+    text-transform: uppercase;
+}
+.tour_list_card .tour_info h3{
+    color: #192126;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 150% */
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+.tour_list_card .tour_info p{
+    color: #D15009;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 14px; /* 116.667% */
+}
+.tour_list_card .tour_info h6{
+    color: #192126;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 14px; /* 116.667% */
+    margin-top: 5px;
+}
+.tour_list_card .tour_info h6 img{
+  margin-right: 3px;
+  margin-top: -2px;
+}
+.tour_list_card a{
+    color: #009093;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 125% */
+    padding: 8px 16px;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid #009093;
+    text-decoration: none;
+    margin-top: 20px;
+}
+.list_cover{
+    height: 400px !important;
+    overflow-y: scroll;
+}
+.list_cover {
+    overflow: auto;
+  }
+  
+  .list_cover::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  
+  .list_cover{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .getstartedd {
+	color: #FFF;
+	text-align: center;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 20px;
+	background-color: #009093;
+	padding: 16px;
+	text-decoration: none;
+	margin-top: 40px;
+	border-radius: 5.279px;
+	transition: all .3s linear;
+	border: .5px solid #00909300;
+}
+.tour_list_start h3{
+    color: #21272A;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 44px; /* 129.412% */
+    margin-top: 80px;
+}
+.tour_list_start p{
+    color: rgba(30, 30, 30, 0.60);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    margin-bottom: 40px;
+}
+.tour_select{
+    margin-bottom: 52px;
+    color: rgba(0, 0, 0, 0.50);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+    padding: 12px;
+}
+
+/* Container for all progress bars in a row */
+.progress-bars-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+
+  /* Each progress bar container */
+  .progress-bar-container {
+	background-color: #e0e0e0;
+	border-radius: 8px;
+	height: 8px;
+	width: 30%;
+	overflow: hidden;
+}
+
+  /* The progress bar (completed part) */
+  .progress-bar {
+    height: 100%;
+    background-color: #009093;
+  }
+
+  /* Step 1 completed */
+  .progress-bar.step-1 {
+    width: 100%;
+  }
+
+  /* Step 2 in progress (50% completed) */
+  .progress-bar.step-2 {
+    width: 0%;
+  }
+
+  /* Step 3 not started (0% completed) */
+  .progress-bar.step-3 {
+    width: 0%;
+  }
+  .progress-bars-container p {
+	color: #009093;
+	font-family: Manrope;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 14px;
+	margin-top: -4px;
+    
+}
+.progress_bar_step{
+    display: none;
+}
