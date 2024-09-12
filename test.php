@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour List</title>
-    <!-- ====== All CSS Links  -->
+    <!-- ====== All CSS Links ====== -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media.css">
 </head>
 <body>
-    <!-- ====== Navbar Start  -->
+    <!-- ====== Navbar Start ====== -->
     <section id="navbar_area">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-2 col-4 order-lg-1 order-2">
-                    <!-- ==== logo  -->
+                    <!-- ==== logo ==== -->
                     <img src="images/logo.png" alt="logo">
                 </div>
                 <div class="col-lg-8 col-3 order-lg-2 order-1">
@@ -58,19 +58,54 @@
         </div>
     </div>
 
-    <!-- List Area -->
     <section id="list_area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-12">
                     <div class="tour_list_start">
                         <h3>Select your tour</h3>
-                        <p>Kickstart your community’s journey to better a <br> wellbeing. Select a tour for your team.</p>
+                        <p>Kickstart your community’s journey to better wellbeing. Select a tour for your team.</p>
                         <select id="tour_select" class="form-select tour_select" aria-label="Select start date of your tour">
                             <option selected>Select start date of your tour</option>
                         </select>
                         <div id="tour_list_container" class="list_cover">
-                            <!-- Dynamic tour cards will be injected here -->
+                            <?php
+                                // API URL
+                                $url = 'https://feetapart.net/getMegaEventTourTemplate';
+
+                                // Use file_get_contents to make a GET request to the API
+                                $response = @file_get_contents($url);
+
+                                if ($response === FALSE) {
+                                    // Error fetching data from API
+                                    echo "<p>Failed to load tours. Please try again later.</p>";
+                                } else {
+                                    // Parse the JSON response into an associative array
+                                    $data = json_decode($response, true);
+
+                                    // Check if the 'data' field exists in the response
+                                    if (isset($data['data']) && is_array($data['data'])) {
+                                        // Loop through the data array and create HTML for each tour
+                                        foreach ($data['data'] as $tour) {
+                                            echo "
+                                                <div class='tour_list_card'>
+                                                    <div class='d-flex'>
+                                                        <img src='{$tour['image']}' width='100px' height='100px' alt='{$tour['name']}'>
+                                                        <div class='tour_info'>
+                                                            <span>{$tour['milestoneCount']} milestones</span>
+                                                            <h3>{$tour['name']}</h3>
+                                                            <h6><img src='images/design/icon/mdi_run.svg' alt='icon'>{$tour['type']} | {$tour['distance']} km</h6>
+                                                        </div>
+                                                    </div>
+                                                    <a href='#'>Join this tour</a>
+                                                </div>
+                                            ";
+                                        }
+                                    } else {
+                                        echo "<p>No tours available at this time.</p>";
+                                    }
+                                }
+                            ?>
                         </div>
                         <div class="button_overlay">
                             <a href="#" class="getstartedd w-100 d-block">Join & Start inviting colleagues</a>
@@ -89,67 +124,9 @@
         </div>
     </section>
 
-    <!-- ====== Navbar End  -->
-    <!-- ====== All JS Link  -->
+    <!-- ====== All JS Links ====== -->
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        async function populateTourList() {
-    try {
-        const response = await fetch('https://feetapart.net/getMegaEventTourTemplate');
-        
-        // Log the response status and headers for debugging
-        console.log('Response Status:', response.status);
-        console.log('Response Headers:', response.headers);
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        console.log('API Response:', result);  // Log the response for debugging
-
-        const data = result.data;  // Check if 'data' exists
-
-        if (!Array.isArray(data) || data.length === 0) {
-            throw new Error('No tours available or data format incorrect');
-        }
-
-        const tourListContainer = document.getElementById('tour_list_container');
-        tourListContainer.innerHTML = '';
-
-        // Loop through the data array and create HTML for each tour
-        let tourHTML = '';
-        data.forEach(tour => {
-            tourHTML += `
-                <div class="tour_list_card">
-                    <div class="d-flex">
-                        <img src="${tour.image}" width="100px" height="100px" alt="${tour.name}">
-                        <div class="tour_info">
-                            <span>${tour.milestoneCount} milestones</span>
-                            <h3>${tour.name}</h3>
-                            <h6><img src="images/design/icon/mdi_run.svg" alt="icon">${tour.type} | ${tour.distance} km</h6>
-                        </div>
-                    </div>
-                    <a href="#">Join this tour</a>
-                </div>
-            `;
-        });
-
-        // Inject the created HTML into the container
-        tourListContainer.innerHTML = tourHTML;
-
-    } catch (error) {
-        // Log detailed error information
-        console.error('Error fetching the tour data:', error);
-        document.getElementById('tour_list_container').innerHTML = `<p>Failed to load tours. Please try again later.</p><p>Error: ${error.message}</p>`;
-    }
-}
-
-// Call the function to populate the tour list when the page loads
-populateTourList();
-
-    </script>
 </body>
 </html>
