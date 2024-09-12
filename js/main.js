@@ -1,3 +1,37 @@
+
+
+
+// Function to add options starting from tomorrow
+function populateTourDates() {
+    const selectElement = document.getElementById('tour_select');
+    const today = new Date();
+    
+    // Get tomorrow's date
+    let startDate = new Date(today);
+    startDate.setDate(today.getDate() + 1);
+
+    // Number of days to display in the dropdown (you can adjust as needed)
+    const numberOfDays = 30;
+
+    for (let i = 0; i < numberOfDays; i++) {
+        const option = document.createElement('option');
+        const date = new Date(startDate);
+        date.setDate(startDate.getDate() + i);
+
+        // Format date as yyyy-mm-dd (you can change the format)
+        const formattedDate = date.toISOString().split('T')[0];
+
+        option.value = formattedDate;
+        option.textContent = formattedDate;
+        selectElement.appendChild(option);
+    }
+}
+
+// Call the function to populate the dropdown
+populateTourDates();
+
+
+
 $(document).ready(function() {
   // Show the main_img after 1 second
   setTimeout(function() {
@@ -56,3 +90,5 @@ slider.addEventListener('mouseout', () => {
     slider.style.animationPlayState = 'running'; // Resume the slider when the mouse leaves
 });
 
+
+// Function to fetch data and populate HTML

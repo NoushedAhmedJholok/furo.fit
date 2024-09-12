@@ -68,14 +68,12 @@
                 <div class="tour_list_start">
                     <h3>Select your tour</h3>
                     <p>Kickstart your community’s journey to better a <br> wellbeing. Select a tour for your team.</p>
-                    <select class="form-select tour_select" aria-label="Select start date of your tour">
+                    <select id="tour_select" class="form-select tour_select" aria-label="Select start date of your tour">
                         <option selected>Select start date of your tour</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
                     </select>
-                    <div class="list_cover">
-                        <div class="tour_list_card">
+                    <div id="tour_list_container" class="list_cover">
+                        
+                        <!-- <div class="tour_list_card">
                             <div class="d-flex">
                                 <img src="images/design/effect1.png" width="100px" height="100px" alt="img">
                                 <div class="tour_info">
@@ -86,67 +84,8 @@
                                 </div>
                             </div>
                             <a href="#">Join this tour</a>
-                        </div>
-                        <div class="tour_list_card">
-                            <div class="d-flex">
-                                <img src="images/design/effect1.png" width="100px" height="100px" alt="img">
-                                <div class="tour_info">
-                                    <span>10 milestones</span>
-                                    <h3>Italy Virtual Tour</h3>
-                                    <p><i class="fa fa-clock-o" aria-hidden="true"></i> Starts in 3 days</p>
-                                    <h6><img src="images/design/icon/mdi_run.svg" alt="icon">Run + Walk | 800 km</h6>
-                                </div>
-                            </div>
-                            <a href="#">Join this tour</a>
-                        </div>
-                        <div class="tour_list_card">
-                            <div class="d-flex">
-                                <img src="images/design/effect1.png" width="100px" height="100px" alt="img">
-                                <div class="tour_info">
-                                    <span>10 milestones</span>
-                                    <h3>Italy Virtual Tour</h3>
-                                    <p><i class="fa fa-clock-o" aria-hidden="true"></i> Starts in 3 days</p>
-                                    <h6><img src="images/design/icon/mdi_run.svg" alt="icon">Run + Walk | 800 km</h6>
-                                </div>
-                            </div>
-                            <a href="#">Join this tour</a>
-                        </div>
-                        <div class="tour_list_card">
-                            <div class="d-flex">
-                                <img src="images/design/effect1.png" width="100px" height="100px" alt="img">
-                                <div class="tour_info">
-                                    <span>10 milestones</span>
-                                    <h3>Italy Virtual Tour</h3>
-                                    <p><i class="fa fa-clock-o" aria-hidden="true"></i> Starts in 3 days</p>
-                                    <h6><img src="images/design/icon/mdi_run.svg" alt="icon">Run + Walk | 800 km</h6>
-                                </div>
-                            </div>
-                            <a href="#">Join this tour</a>
-                        </div>
-                        <div class="tour_list_card">
-                            <div class="d-flex">
-                                <img src="images/design/effect1.png" width="100px" height="100px" alt="img">
-                                <div class="tour_info">
-                                    <span>10 milestones</span>
-                                    <h3>Italy Virtual Tour</h3>
-                                    <p><i class="fa fa-clock-o" aria-hidden="true"></i> Starts in 3 days</p>
-                                    <h6><img src="images/design/icon/mdi_run.svg" alt="icon">Run + Walk | 800 km</h6>
-                                </div>
-                            </div>
-                            <a href="#">Join this tour</a>
-                        </div>
-                        <div class="tour_list_card">
-                            <div class="d-flex">
-                                <img src="images/design/effect1.png" width="100px" height="100px" alt="img">
-                                <div class="tour_info">
-                                    <span>10 milestones</span>
-                                    <h3>Italy Virtual Tour</h3>
-                                    <p><i class="fa fa-clock-o" aria-hidden="true"></i> Starts in 3 days</p>
-                                    <h6><img src="images/design/icon/mdi_run.svg" alt="icon">Run + Walk | 800 km</h6>
-                                </div>
-                            </div>
-                            <a href="#">Join this tour</a>
-                        </div>
+                        </div> -->
+                        
                     </div>
                    <div class="button_overlay">
                     <a href="#" class="getstartedd w-100 d-block">Join & Start inviting colleagues</a>
@@ -169,5 +108,46 @@
      <script src="js/jquery-1.12.4.min.js"></script>
      <script src="js/bootstrap.min.js"></script>
      <script src="js/main.js"></script>
+     <script>
+    // Function to fetch data and populate the tour list
+async function populateTourList() {
+    try {
+        const response = await fetch('https://feetapart.net/getMegaEventTourTemplate');
+        const result = await response.json();
+
+        const data = result.data;  // Assuming the data is inside a 'data' key in the response
+        const tourListContainer = document.getElementById('tour_list_container');
+
+        // Clear the container in case it has old data
+        tourListContainer.innerHTML = '';
+
+        // Loop through the data array and create HTML for each tour
+        data.forEach(tour => {
+            const tourCard = `
+                <div class="tour_list_card">
+                    <div class="d-flex">
+                        <img src="${tour.image}" width="100px" height="100px" alt="${tour.name}">
+                        <div class="tour_info">
+                            <span>${tour.milestoneCount} milestones</span>
+                            <h3>${tour.name}</h3>
+                            <h6><img src="images/design/icon/mdi_run.svg" alt="icon">${tour.type} | ${tour.distance} km</h6>
+                        </div>
+                    </div>
+                    <a href="#">Join this tour</a>
+                </div>
+            `;
+
+            // Inject the created HTML into the container
+            tourListContainer.innerHTML += tourCard;
+        });
+    } catch (error) {
+        console.error('Error fetching the tour data:', error);
+    }
+}
+
+// Call the function to populate the tour list when the page loads
+populateTourList();
+
+     </script>
 </body>
 </html>

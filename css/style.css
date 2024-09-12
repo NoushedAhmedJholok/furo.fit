@@ -446,3 +446,8 @@ img.effect_five{
 .progress_bar_step{
     display: none;
 }
+.form-select:focus {
+	border-color: #86b7fe;
+	outline: 0;
+	box-shadow: 0 0 0 0 rgba(13,110,253,.25);
+}
